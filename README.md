@@ -84,17 +84,16 @@ PRIMETRADE/
 │   │   ├── components/
 │   │   ├── pages/
 │   │   ├── styles/
-│   │   ├── api.js
-│   │   ├── App.jsx
 │   │   ├── App.css
+│   │   ├── App.jsx
 │   │   ├── index.css
-│   │   └── main.jsx
+│   │   ├── main.jsx
 │   ├── .gitignore
 │   ├── package-lock.json
 │   ├── package.json
 │   ├── vite.config.js
+│   └── README.md
 └── README.md
-
 
 
 API Endpoints
