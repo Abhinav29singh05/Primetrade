@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "http://localhost:5000/" });
+const API = axios.create({ baseURL: "https://primetrade-jkxl.onrender.com" });
 
 // Add JWT automatically
 API.interceptors.request.use((req) => {
