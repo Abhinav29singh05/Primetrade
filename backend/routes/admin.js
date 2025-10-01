@@ -8,8 +8,10 @@ const router=express.Router();
 
 // admin-get all users with their tasks
 router.get('/users', authMiddleware, adminMiddleware,async(req,res,next)=>{
+        console.log("GET /users called");
     try{
         const users=await User.find().select('-password');
+            console.log(`Fetched ${users.length} users`);
         const userWithTasks=await Promise.all(
             users.map(async(u)=>{
                 const tasks = await Task.find({owner: u._id});
@@ -25,10 +27,14 @@ router.get('/users', authMiddleware, adminMiddleware,async(req,res,next)=>{
 
 // admin-delete a user
 router.delete('/deleteUser/:id', authMiddleware, adminMiddleware,async(req,res,next)=>{
+        console.log(`DELETE /users/${req.params.id} called`);
     try{
         const userId=req.params.id;
-        const user=await User.findByIdAndDelete(userId);    
+        console.log(userId);
+        const user=await User.findByIdAndDelete(userId);   
+
         await Task.deleteMany({user:userId});
+        console.log("User and associated tasks deleted successfully");
         if(!user){
             return res.status(404).json({message:'User not found'});
         }
@@ -39,12 +45,14 @@ router.delete('/deleteUser/:id', authMiddleware, adminMiddleware,async(req,res,n
 })
 
 router.patch("/makeAdmin/:id", async (req, res) => {
+    console.log(`PATCH /makeAdmin/:id called`);
   try {
     const user = await User.findByIdAndUpdate(
       req.params.id,
       { role: "admin" },
       { new: true }
     );
+        console.log("User role updated to admin");
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }

@@ -9,6 +9,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    console.log("Login form submitted:");
     e.preventDefault();
     setError("");
     try {
@@ -16,6 +17,7 @@ export default function Login() {
       localStorage.setItem("token", data.token);
       // Store user data for future use
       localStorage.setItem("user", JSON.stringify(data.user));
+      console.log("User data stored:");
       if (data.user.role === "admin") {
         navigate("/admin");
       } else {

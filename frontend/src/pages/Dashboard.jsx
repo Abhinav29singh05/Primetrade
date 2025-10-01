@@ -14,9 +14,11 @@ export default function Dashboard() {
   const navigate = useNavigate();
 
   const fetchTasks = async () => {
+      console.log("Fetching tasks...");
     try {
       setLoading(true);
       const { data } = await API.get("/tasks");
+        console.log("Tasks fetched:");
       setTasks(data.tasks);
       setError(null);
     } catch (err) {
@@ -27,8 +29,10 @@ export default function Dashboard() {
   };
 
   const fetchUser = async () => {
+    console.log("Fetching user...");
     try {
-      const { data } = await API.get("/users/me"); 
+      const { data } = await API.get("/users/me");
+        console.log("User fetched:");
       setUser(data.user);
     } catch (err) {
       console.error("Failed to fetch user", err);
@@ -41,9 +45,11 @@ export default function Dashboard() {
   }, []);
 
   const addTask = async () => {
+      console.log("Adding task:");
     try {
       if (!newTask.trim()) return;
       await API.post("/tasks", { title: newTask, description: newDescription, status: newStatus });
+
       setNewTask("");
       setNewDescription("");
       setNewStatus("to-do");
@@ -54,8 +60,10 @@ export default function Dashboard() {
   };
 
   const deleteTask = async (id) => {
+    console.log("Deleting task with ID:");
     try {
       await API.delete(`/tasks/${id}`);
+      console.log("Task deleted successfully");
       fetchTasks();
     } catch (err) {
       setError(err.response?.data?.message || "Failed to delete task");
@@ -63,8 +71,10 @@ export default function Dashboard() {
   };
 
   const updateStatus = async (id, status) => {
+    console.log("Updating task status:");
     try {
       await API.patch(`/tasks/${id}`, { status });
+      console.log("Task status updated successfully");
       fetchTasks();
     } catch (err) {
       setError(err.response?.data?.message || "Failed to update status");

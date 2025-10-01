@@ -10,9 +10,11 @@ export default function AdminDashboard() {
   const navigate = useNavigate();
 
   const fetchUsers = async () => {
+    console.log("Fetching users...");
     try {
       setLoading(true);
       const { data } = await API.get("/admin/users");
+      console.log("Users fetched:");
       setUsers(data.users);
       setError(null);
     } catch (err) {
@@ -27,8 +29,10 @@ export default function AdminDashboard() {
   }, []);
 
   const deleteUser = async (id) => {
+      console.log("Deleting user with ID:");
     try {
       await API.delete(`/admin/deleteUser/${id}`);
+      console.log("User deleted successfully");
       await fetchUsers();
     } catch (err) {
       setError(err.response?.data?.message || "Failed to delete user");

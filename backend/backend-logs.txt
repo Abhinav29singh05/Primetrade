@@ -1,0 +1,60 @@
+ Server is starting...
+ Attempting to connect to MongoDB using URI from environment variables.
+ Connected to MongoDB
+ Server is running on port 5000
+
+routes/admin.js
+ GET /admin/users called
+ Fetched 4 users
+
+ DELETE /admin/deleteUser/:id called
+[DEBUG] Deleting user with id: 
+ User and associated tasks deleted successfully
+ User not found
+
+ PATCH /admin/makeAdmin/:id called
+ User role updated to admin:
+ User not found when promoting to admin
+
+
+routes/task.js
+
+ POST /tasks called with: 
+ Task created: 
+ Error creating task: <error_message>
+
+ GET /tasks called
+ Fetched 3 tasks
+ Error fetching tasks:
+
+ PATCH /tasks/:id called with: 
+ Task updated: 
+ Task not found
+
+ DELETE /tasks/:id called
+ Task deleted: 
+ Task not found
+
+
+routes/user.js
+ POST /users/register called with: 
+ Validation errors: 
+ Existing user found: 
+ User registered successfully
+
+ PATCH /users/:id called with: 
+ User updated:
+ User not found
+
+ POST /users/login called with: 
+ Validation errors:
+ User found:
+ Invalid email or password
+ Login successful for user:
+
+ POST /users/logout called
+ User logged out successfully
+
+ GET /users/me called
+ Current user fetched:
+ User not found

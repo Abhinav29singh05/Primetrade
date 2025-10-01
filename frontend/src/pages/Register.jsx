@@ -7,10 +7,10 @@ export default function Register() {
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
+    console.log("Register form submitted:");
     e.preventDefault();
     setError("");
     try {
-      // First register the user
       const registerResponse = await API.post("/users/register", form);
       if (registerResponse.status === 201) {
         try {
@@ -19,6 +19,7 @@ export default function Register() {
             email: form.email,
             password: form.password
           });
+          console.log("Login response:");
           
           // Store the token and user data
           localStorage.setItem("token", loginResponse.data.token);

@@ -1,0 +1,22 @@
+ AdminDashboard mounted
+ Fetching users...
+ Users fetched: 
+ Deleting user with ID: 
+ User deleted successfully
+
+ Dashboard mounted
+ Fetching tasks...
+ Tasks fetched: 
+ Fetching user...
+ User fetched: 
+ Adding task: 
+ Deleting task with ID:
+ Task deleted successfully
+ Updating task status: 
+ Task status updated successfully
+
+ Login form submitted:
+ User data stored:
+
+ Register form submitted: 
+ Login response: 

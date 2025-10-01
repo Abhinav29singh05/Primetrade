@@ -14,12 +14,13 @@ router.post('/register',[
     body('email').isEmail(),
     body('password').isLength({min:6})
     ],async(req,res,next)=>{
+        console.log("POST /users/register called with:");
         try{
             const errors=validationResult(req);
             if(!errors.isEmpty()){
                 return res.status(400).json({errors:errors.array()});
             }
-            // console.log(req.body);
+                console.log(errors);
             const{name,email,password,role}=req.body;
             const existingUser=await User.findOne({email});
             if(existingUser){
@@ -37,14 +38,14 @@ router.post('/register',[
 })
 
 router.patch('/:id', authMiddleware, async (req, res, next) => {
+        console.log(`PATCH /users/:id called with:`);
     try {
         const userId = req.params.id;
-        // console.log(req.user);
-        // console.log(userId);
         if (req.user.id !== userId) {
             return res.status(403).json({ message: 'Access denied' });
         }
         const updatedUser = await User.findByIdAndUpdate(userId, req.body, { new: true });
+        console.log("User updated:");
         if (!updatedUser) {
             return res.status(404).json({ message: 'User not found' });
         }
@@ -59,15 +60,19 @@ router.patch('/:id', authMiddleware, async (req, res, next) => {
 router.post('/login', [body('email').isEmail(),
     body('password').exists()
     ], async (req, res, next) => {
+        console.log("POST /users/login called with:");
         try{
             const errors = validationResult(req);
             if(!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+            console.log(errors);
 
             const {email,password}=req.body;
             const user=await User.findOne({email});
+                console.log(user);
             if(!user){
                 return res.status(401).json({message:'Invalid email or password'});
             }
+
 
             const isMatch=await bycrypt.compare(password,user.password);
             if(!isMatch){
@@ -81,6 +86,7 @@ router.post('/login', [body('email').isEmail(),
                 sameSite:'lax',
                 maxAge: (process.env.REFRESH_TOKEN_EXPIRES_IN ? parseInt(process.env.REFRESH_TOKEN_EXPIRES_IN) : 7*24*60*60) * 1000
             };
+
             res.cookie('token',token,cookieOptions);
             res.json({token,message:'Login successful',user:{id:user._id,name:user.name,email:user.email,role:user.role}});
 
@@ -90,15 +96,19 @@ router.post('/login', [body('email').isEmail(),
 })
 
 router.post('/logout',(req,res)=>{
+        console.log("POST /users/logout called");
     res.clearCookie('token',{ httpOnly:true, secure:process.env.COOKIE_SECURE==='true' });
     res.json({message:'Logged out successfully'});
 })
+
 router.get('/me', authMiddleware, async (req, res, next) => {
+        console.log("GET /users/me called");
     try {
         const user = await User.findById(req.user.id).select('-password');  
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
+        
         res.json({ user });
     }       
     catch (err) {
