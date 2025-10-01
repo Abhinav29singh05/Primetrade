@@ -89,21 +89,35 @@ PRIMETRADE/
 │   ├── package.json
 
 ├── frontend/
+
 │   ├── public/
+
 │   ├── src/
+
 │   │   ├── assets/
+
 │   │   ├── components/
+
 │   │   ├── pages/
+
 │   │   ├── styles/
+
 │   │   ├── App.css
+
 │   │   ├── App.jsx
+
 │   │   ├── index.css
+
 │   │   ├── main.jsx
+
 │   ├── .gitignore
+
 │   ├── package-lock.json
+
 │   ├── package.json
+
 │   ├── vite.config.js
-│   └── README.md
+
 └── README.md
 
 
