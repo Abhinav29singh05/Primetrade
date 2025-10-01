@@ -67,16 +67,27 @@ Make sure to update environment variables for the deployed backend.
 
 PRIMETRADE/
 ├── backend/
+
 │   ├── config/
+
 │   ├── controllers/
+
 │   ├── middlewares/
+
 │   ├── models/
+
 │   ├── routes/
+
 │   ├── utils/
+
 │   ├── .env
+
 │   ├── app.js
+
 │   ├── package-lock.json
+
 │   ├── package.json
+
 ├── frontend/
 │   ├── public/
 │   ├── src/
