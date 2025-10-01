@@ -67,33 +67,34 @@ Make sure to update environment variables for the deployed backend.
 
 PRIMETRADE/
 ├── backend/
-│   ├── config/             # DB and app config files (e.g., db.js)
-│   ├── controllers/        # Logic for handling requests
-│   ├── middlewares/        # Custom middleware (e.g., auth.js)
-│   ├── models/             # Mongoose models (e.g., User.js, Task.js)
-│   ├── routes/             # Express route handlers (e.g., user.js, task.js)
-│   ├── utils/              # Helper functions (e.g., token.js)
-│   ├── .env                # Environment variables
-│   ├── app.js              # Entry point for Express app
-│   ├── package.json        # Backend dependencies and scripts
-
+│   ├── config/
+│   ├── controllers/
+│   ├── middlewares/
+│   ├── models/
+│   ├── routes/
+│   ├── utils/
+│   ├── .env
+│   ├── app.js
+│   ├── package-lock.json
+│   ├── package.json
 ├── frontend/
-│   ├── public/             # Static assets (favicon, index.html)
+│   ├── public/
 │   ├── src/
-│   │   ├── assets/         # Images, fonts, etc.
-│   │   ├── components/     # Reusable UI components
-│   │   ├── pages/          # Page-level components (e.g., Home.jsx, Login.jsx)
-│   │   ├── styles/         # CSS or SCSS files
-│   │   ├── api.js          # Axios or fetch setup for backend calls
-│   │   ├── App.jsx         # Main app component
-│   │   ├── main.jsx        # React DOM render entry
-│   │   ├── App.css         # Global styles
-│   │   ├── index.css       # Base styles
-│   ├── .gitignore          # Frontend-specific ignore rules
-│   ├── package.json        # Frontend dependencies and scripts
-│   ├── vite.config.js      # Vite configuration
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── styles/
+│   │   ├── api.js
+│   │   ├── App.jsx
+│   │   ├── App.css
+│   │   ├── index.css
+│   │   └── main.jsx
+│   ├── .gitignore
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── vite.config.js
+└── README.md
 
-└── README.md               # Root-level project overview
 
 
 API Endpoints
